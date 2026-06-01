@@ -1,0 +1,15 @@
+# docker-compose.yml
+
+services:
+  app:
+    build: .
+    environment:
+      LLM_URL=${LLM_URL}      # injected automatically
+    models:
+      - llm                   # references model below
+
+models:                       # <- NEW in 2026!
+
+  llm:
+    model: ai/qwen3.5-coder   # auto-pulled from Hub
+    context_size: 8192
